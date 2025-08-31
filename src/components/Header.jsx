@@ -1,13 +1,34 @@
 import React from "react";
+import {signOut} from "firebase/auth"
+import { auth } from "../utils/firebase";
+import {useSelector} from "react-redux"
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+
+  const user = useSelector(store => store.user)
+  const navigate = useNavigate();
+
+  const handleSignOut = ()=>{
+    signOut(auth).then(() => {
+      navigate("/")
+      // Sign-out successful.
+    }).catch((error) => {
+
+      // An error happened.
+    });
+  }
   return (
-    <div className="absolute bg-gradient-to-b z-10 from-black ">
+    <div className="absolute w-screen bg-gradient-to-b z-10 from-black flex justify-between ">
       <img
         className="w-64  m-4"
         alt="logo"
         src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2025-08-26/consent/87b6a5c0-0104-4e96-a291-092c11350111/0198e689-25fa-7d64-bb49-0f7e75f898d2/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
       />
+     {user && <div className="flex items-center ">
+        <button className="p-4 m-4 cursor-pointer" onClick={handleSignOut}>Sign Out</button>
+        <img className="w-16 h-16 m-4" alt="userLogo" src="data:image/jpeg;base64,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" />
+      </div>}
 
     </div>
   );
