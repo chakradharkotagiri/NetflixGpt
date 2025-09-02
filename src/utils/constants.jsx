@@ -8,7 +8,7 @@ export const USER_AVATAR =
     method: "GET",
     headers:{
       accept : "application/json",
-      Authorization :"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0OTQ0NGZmOGY2YzllMDhmNmQyZmM2Zjk3YjgxNWFhZSIsIm5iZiI6MTc1NjcyMTk2OS4zNzY5OTk5LCJzdWIiOiI2OGI1NzMzMTM3ODg5YjhjNTcxZjI4MGYiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.-NTr04MwilTvLUZefgidjAR6ppK-mlkT5DNSqFyKxXI"
+      Authorization :"Bearer " + import.meta.env.VITE_TMDB_KEY,
     },
   };
 
@@ -18,3 +18,6 @@ export const USER_AVATAR =
   export const BG_URL ="https://assets.nflxext.com/ffe/siteui/vlv3/cb72daa5-bd8d-408b-b949-1eaef000c377/web/IN-en-20250825-TRIFECTA-perspective_a3209894-0b01-4ddb-b57e-f32165e20a3f_medium.jpg"
 
   export const SUPPORTED_LANGUAGES = [{identifier:"en", name: "English"},{identifier:"hindi", name: "Hindi"},{identifier:"spanish", name: "Spanish"}]
+
+  export const OPENAI_KEY = import.meta.env.VITE_OPENAI_KEY
+
