@@ -20,10 +20,11 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
 
-  const emailVal = email.current?.value;
-  const passwordVal = password.current?.value;
+
 
   const handleButtonClick = () => {
+    const emailVal = email.current?.value;
+    const passwordVal = password.current?.value;
     const message = checkValidData(emailVal, passwordVal);
     setErrorMessage(message);
 
