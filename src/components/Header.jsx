@@ -49,34 +49,46 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
   return (
-    <div className="absolute w-screen bg-gradient-to-b z-10 from-black flex justify-between ">
-      <img className="w-64  m-4" alt="logo" src={LOGO} />
+    <div className="absolute w-screen bg-gradient-to-b z-10 from-black flex justify-between flex-col md:flex-row ">
+      <img
+        className="md:w-64 md:h-24 mx-auto w-44 h-16  md:mx-0 md:m-4 "
+        alt="logo"
+        src={LOGO}
+      />
       {user && (
-        <div className="flex items-center ">
-          {showGptSearch && <select
-            className="text-white p-2 bg-gray-900 rounded-lg outline-none"
-            onChange={handleLanguageChange}
-          >
-            {SUPPORTED_LANGUAGES.map((lang) => (
-              <option key={lang.identifier} value={lang.identifier}>
-                {" "}
-                {lang.name}{" "}
-              </option>
-            ))}
-          </select>}
-          <button
-            onClick={handleGptSearchClick}
-            className="py-2 px-4 bg-red-600 rounded-lg text-white  cursor-pointer mx-4"
-          >
-            {showGptSearch?"Home Page":"GPT Search"}
-          </button>
-          <button
-            className="p-4 m-4 text-white cursor-pointer"
-            onClick={handleSignOut}
-          >
-            Sign Out
-          </button>
-          <img className="w-16 h-16 m-8" alt="userLogo" src={USER_AVATAR} />
+        <div className="flex  items-center  md:h-28 h-16 ">
+          {showGptSearch && (
+            <select
+              className="text-white p-2 md:mx-8 mx-4 bg-gray-900  rounded-lg outline-none"
+              onChange={handleLanguageChange}
+            >
+              {SUPPORTED_LANGUAGES.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {" "}
+                  {lang.name}{" "}
+                </option>
+              ))}
+            </select>
+          )}
+          <div className="flex items-center mx-auto">
+            <button
+              onClick={handleGptSearchClick}
+              className="py-2 px-4 bg-red-600  rounded-lg md:w-32 w-36 text-sm md:text-md ml-[10%] md:h-10 h-9  text-white  cursor-pointer md:mx-4"
+            >
+              {showGptSearch ? "Home Page" : "GPT Search"}
+            </button>
+            <button
+              className="p-4 m-4 text-white md:ml-0 md:text-lg text-sm w-30 md:w-max  ml-[10%] cursor-pointer"
+              onClick={handleSignOut}
+            >
+              Sign Out
+            </button>
+          </div>
+          <img
+            className="w-16 h-16 m-8 md:inline-block hidden"
+            alt="userLogo"
+            src={USER_AVATAR}
+          />
         </div>
       )}
     </div>
